@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+## [0.2.0] — 2020-10-03
 ### Added
 - clcj support
 ### Changed
 - Forked from https://github.com/dryewo/clojure-library-template
 
 
-[Unreleased]: https://github.com/ageneau/cljc-lib-template/compare/0.0.0...HEAD
+[0.2.0]: https://github.com/ageneau/cljc-lib-template/compare/0.0.0...0.2.0
+[Unreleased]: https://github.com/ageneau/cljc-lib-template/compare/0.2.0...HEAD
