@@ -11,7 +11,17 @@ A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-FIXME
+To run the Clojure unit tests:
+```
+lein do clean, test
+```
+
+To run the Clojurescript unit tests:
+```
+npm install -g phantomjs
+lein doo phantom test once
+```
+
 
 ## License
 

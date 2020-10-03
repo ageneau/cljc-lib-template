@@ -1,6 +1,6 @@
-(defproject library/lein-template "0.3.3"
+(defproject ageneau/cljc-library.lein-template "0.1.0"
   :description "Leiningen template for libraries with better release cycle."
-  :url "https://github.com/dryewo/clojure-library-template"
+  :url "https://github.com/ageneau/cljc-lib-template"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :eval-in-leiningen true

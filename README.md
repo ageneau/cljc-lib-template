@@ -1,14 +1,13 @@
-# clojure-library-template
+# Clojure/Clojurescript library template
 
-[![Build Status](https://travis-ci.org/dryewo/clojure-library-template.svg?branch=master)](https://travis-ci.org/dryewo/clojure-library-template)
-[![Clojars Project](https://img.shields.io/clojars/v/library/lein-template.svg)](https://clojars.org/library/lein-template)
+[![Build Status](https://api.travis-ci.org/ageneau/cljc-lib-template.svg?branch=master)](https://api.travis-ci.org/ageneau/cljc-lib-template)
+[![Clojars Project](https://img.shields.io/clojars/v/ageneau.cljc-library/lein-template.svg)](https://clojars.org/ageneau.cljc-library/lein-template)
 
-
-Leiningen template for libraries with better release cycle.
+Simple leiningen library template with Clojure/Clojurescript support. Forked from https://github.com/dryewo/clojure-library-template
 
 ## Usage
 
-    lein new library com.example/<lib_name>
+    lein new ageneau.cljc-lib com.example/<lib_name>
 
 Among other improvements, the generated library uses an alternative release cycle:
 
@@ -38,6 +37,7 @@ Example:
 ## License
 
 Copyright © 2018 Dmitrii Balakhonskii
+Copyright © 2020 Sylvain Ageneau
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
