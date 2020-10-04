@@ -1,4 +1,4 @@
-(defproject ageneau.cljc-lib/lein-template "0.2.3"
+(defproject ageneau.cljc-lib/lein-template "0.2.4"
   :description "Leiningen template for libraries with better release cycle."
   :url "https://github.com/ageneau/cljc-lib-template"
   :license {:name "Eclipse Public License"
