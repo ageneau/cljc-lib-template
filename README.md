@@ -1,7 +1,7 @@
 # Clojure/Clojurescript library template
 
 [![Build Status](https://api.travis-ci.org/ageneau/cljc-lib-template.svg?branch=master)](https://api.travis-ci.org/ageneau/cljc-lib-template)
-[![Clojars Project](https://img.shields.io/clojars/v/ageneau.cljc-library/lein-template.svg)](https://clojars.org/ageneau.cljc-library/lein-template)
+[![Clojars Project](https://img.shields.io/clojars/v/ageneau.cljc-lib/lein-template.svg)](https://clojars.org/ageneau.cljc-library/lein-template)
 
 Simple leiningen library template with Clojure/Clojurescript support. Forked from https://github.com/dryewo/clojure-library-template
 
