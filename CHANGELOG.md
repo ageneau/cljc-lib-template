@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+## [0.2.1] — 2020-10-04
 ### Changed
 - Fixed artifact id
 
@@ -18,4 +20,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 [0.2.0]: https://github.com/ageneau/cljc-lib-template/compare/0.0.0...0.2.0
-[Unreleased]: https://github.com/ageneau/cljc-lib-template/compare/0.2.0...HEAD
+[0.2.1]: https://github.com/ageneau/cljc-lib-template/compare/0.2.0...0.2.1
+[Unreleased]: https://github.com/ageneau/cljc-lib-template/compare/0.2.1...HEAD
