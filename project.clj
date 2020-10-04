@@ -4,6 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :eval-in-leiningen true
+  :dependencies [[org.clojure/tools.cli "1.0.194"]]
   :deploy-repositories [["releases" :clojars]]
   :plugins [[lein-shell "0.5.0"]
             [lein-ancient "0.6.15"]

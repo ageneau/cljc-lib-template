@@ -2,9 +2,25 @@
   (:require [leiningen.new.templates :refer [renderer year date project-name
                                              ->files sanitize-ns name-to-path
                                              multi-segment sanitize]]
+            [leiningen.core.project :as proj]
+            [clojure.tools.cli :refer [parse-opts]]
+            [leiningen.new.ageneau.interaction :as i]
             [leiningen.core.main :as main]
+            [clojure.java.io :as io]
+            [clojure.java.shell]
             [clojure.string :as str]))
 
+(defn base-path [name]
+  (-> (System/getProperty "leiningen.original.pwd")
+      (io/file name) (.getPath)))
+
+(defn lein-project []
+  (-> "project.clj" base-path io/file str proj/read))
+
+(defn git-config-get [key]
+  (let [{:keys [exit out]} (clojure.java.shell/sh "git" "config" "--get" key)]
+    (when (zero? exit)
+      (-> out clojure.string/split-lines first))))
 
 (defn prepare-data [name owner repo]
   (let [namespace    (project-name name)
@@ -40,18 +56,26 @@
        ["test/{{nested-dirs}}/test_runner.cljs" (render "test/_namespace_/test_runner.cljs" data)]])))
 
 
-(defn ask-user [prompt]
-  (print prompt)
-  (flush)
-  (read-line))
+(def cli-options [["-n" "--no-git" "Do not initialise as git repository"]
+                  ["-o" "--owner OWNER" "Github repository owner"]
+                  ["-r" "--repo NAME" "Github repository name"]])
 
-
-(defn ageneau.cljc-lib [name]
+(defn ageneau.cljc-lib [name & args]
   (main/info "This template needs GitHub coordinates (REPO_OWNER/REPO_NAME) of the repo you'll be keeping this project in.")
-  (let [owner (ask-user "Enter REPO_OWNER: ")
-        repo  (ask-user "Enter REPO_NAME: ")
-        data  (prepare-data name owner repo)]
+  (let [group (-> (lein-project) :group)
+        cli (parse-opts args cli-options)
+        owner (or (get-in cli [:options :owner])
+                  (git-config-get "github.user")
+                  (i/ask-user "Enter REPO_OWNER: "))
+        repo  (or (get-in cli [:options :repo]) (i/ask-user "Enter REPO_NAME: "))
+        data  (prepare-data name owner repo)
+        initialise-with-git? (-> cli :options :no-git not)]
     (->> data
          (prepare-files)
          (apply ->files))
-    (main/info "Generated a project based on \"cljc-lib\" template.")))
+    (when initialise-with-git?
+      (clojure.java.shell/with-sh-dir (base-path (:name data))
+        (clojure.java.shell/sh "git" "init")
+        (clojure.java.shell/sh "git" "add" ".")
+        (clojure.java.shell/sh "git" "commit" "-m" (clojure.string/join " " (concat ["lein" "new" group name] args)))))
+    (main/info (str "Generated a project based on \"" group "\" template."))))
