@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+### Fixed
+- Fixed issue with getting project group-id
 
 ## [0.2.3] — 2020-10-04
 ### Added
 - add option to initialize a git repository
-### Changed
+### Fixed
 - Fixed Clojars badge
 
 ## [0.2.2] — 2020-10-04

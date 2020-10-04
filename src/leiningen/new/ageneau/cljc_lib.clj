@@ -10,12 +10,11 @@
             [clojure.java.shell]
             [clojure.string :as str]))
 
+(def project-group "ageneau.cljc-lib")
+
 (defn base-path [name]
   (-> (System/getProperty "leiningen.original.pwd")
       (io/file name) (.getPath)))
-
-(defn lein-project []
-  (-> "project.clj" base-path io/file str proj/read))
 
 (defn git-config-get [key]
   (let [{:keys [exit out]} (clojure.java.shell/sh "git" "config" "--get" key)]
@@ -62,8 +61,7 @@
 
 (defn ageneau.cljc-lib [name & args]
   (main/info "This template needs GitHub coordinates (REPO_OWNER/REPO_NAME) of the repo you'll be keeping this project in.")
-  (let [group (-> (lein-project) :group)
-        cli (parse-opts args cli-options)
+  (let [cli (parse-opts args cli-options)
         owner (or (get-in cli [:options :owner])
                   (git-config-get "github.user")
                   (i/ask-user "Enter REPO_OWNER: "))
@@ -77,5 +75,5 @@
       (clojure.java.shell/with-sh-dir (base-path (:name data))
         (clojure.java.shell/sh "git" "init")
         (clojure.java.shell/sh "git" "add" ".")
-        (clojure.java.shell/sh "git" "commit" "-m" (clojure.string/join " " (concat ["lein" "new" group name] args)))))
-    (main/info (str "Generated a project based on \"" group "\" template."))))
+        (clojure.java.shell/sh "git" "commit" "-m" (clojure.string/join " " (concat ["lein" "new" project-group name] args)))))
+    (main/info (str "Generated a project based on \"" project-group "\" template."))))
