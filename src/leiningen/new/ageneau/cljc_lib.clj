@@ -33,7 +33,8 @@
        ["LICENSE" (render "LICENSE" data)]
        ["CHANGELOG.md" (render "CHANGELOG.md" data)]
        [".gitignore" (render "_gitignore" data)]
-       [".travis.yml" (render ".travis.yml" data)]
+       [".travis.yml" (render "_travis.yml" data)]
+       [".github/workflows/clojure.yml" (render "_github/workflows/clojure.yml" data)]
        ["src/{{nested-dirs}}/core.cljc" (render "src/_namespace_/core.cljc" data)]
        ["test/{{nested-dirs}}/core_test.cljc" (render "test/_namespace_/core_test.cljc" data)]
        ["test/{{nested-dirs}}/test_runner.cljs" (render "test/_namespace_/test_runner.cljs" data)]])))
